@@ -77,3 +77,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.email
+
+
+class CompletedChallenge(models.Model):
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    date_completed = models.DateTimeField(auto_now_add=True)
+    total_points = models.IntegerField(null=True)
+
