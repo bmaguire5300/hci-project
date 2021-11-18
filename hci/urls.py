@@ -22,5 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.user_login, name='login'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('profile/', views.profile, name='profile'),
+    path('challenge/', views.challenge, name='challenge'),
+    path('submitchallenge/', views.submit_challenge, name='submit_challenge'),
+
+
 
 ]

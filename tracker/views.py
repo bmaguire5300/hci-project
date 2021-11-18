@@ -33,3 +33,24 @@ def dashboard(request):
     context_dict = {}
 
     return render(request, 'dashboard.html', context=context_dict)
+
+
+def profile(request):
+    context_dict = {}
+
+    return render(request, 'profile.html', context=context_dict)
+
+
+def challenge(request):
+    context_dict = {}
+
+    return render(request, 'challenge.html', context=context_dict)
+
+
+def submit_challenge(request):
+
+    if request.method == 'POST':
+        meat = request.POST.get('meat', '')
+        print(meat)
+
+    return render(request, 'challenge.html')
