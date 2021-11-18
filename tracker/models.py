@@ -68,6 +68,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     car_mult = models.IntegerField(null=True) 
     total_points = models.IntegerField(null=True)
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
+
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] # Email & Password are required by default.
