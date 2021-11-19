@@ -40,6 +40,9 @@ def profile(request):
     user = User.objects.get(id=request.user.id)
     context_dict = {}
     context_dict['diet'] = user.meat_mult
+    context_dict['car'] = user.car_mult  
+    context_dict['water'] = user.water_mult
+    context_dict['foodsource'] = user.foodsource_mult
 
     return render(request, 'profile.html', context=context_dict)
 
@@ -63,11 +66,8 @@ def update_profile(request):
         user = User.objects.get(id=request.user.id)
         user.meat_mult = request.POST.get('diet', '')
         user.car_mult = request.POST.get('car', '')
+        user.water_mult = request.POST.get('water', '')
+        user.foodsource_mult = request.POST.get('foodsource', '')
         user.save()
-        print(user.meat_mult)
-        print(user.car_mult)
-
-    user = User.objects.get(id=request.user.id)
-    context_dict = {}
-    context_dict['diet'] = user.meat_mult    
-    return render(request, 'profile.html', context=context_dict)        
+     
+    return profile(request)        
