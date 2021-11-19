@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib import messages
+from .models import User
 
 # Create your views here.
 
@@ -36,7 +37,12 @@ def dashboard(request):
 
 
 def profile(request):
+    user = User.objects.get(id=request.user.id)
     context_dict = {}
+    context_dict['diet'] = user.meat_mult
+    context_dict['car'] = user.car_mult  
+    context_dict['water'] = user.water_mult
+    context_dict['foodsource'] = user.foodsource_mult
 
     return render(request, 'profile.html', context=context_dict)
 
@@ -54,3 +60,14 @@ def submit_challenge(request):
         print(meat)
 
     return render(request, 'challenge.html')
+
+def update_profile(request):
+    if request.method == 'POST':
+        user = User.objects.get(id=request.user.id)
+        user.meat_mult = request.POST.get('diet', '')
+        user.car_mult = request.POST.get('car', '')
+        user.water_mult = request.POST.get('water', '')
+        user.foodsource_mult = request.POST.get('foodsource', '')
+        user.save()
+     
+    return profile(request)        

@@ -25,7 +25,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('challenge/', views.challenge, name='challenge'),
     path('submitchallenge/', views.submit_challenge, name='submit_challenge'),
-
+    path('updateProfile/', views.update_profile, name='update_profile'),
 
 
 ]

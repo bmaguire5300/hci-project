@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.staff = True
+        user.is_staff = True
         user.save(using=self._db)
         return user
 
@@ -40,8 +40,9 @@ class UserManager(BaseUserManager):
             email,
             password=password,
         )
-        user.staff = True
-        user.admin = True
+        user.is_staff = True
+        user.is_admin = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
@@ -65,7 +66,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     meat_mult = models.IntegerField(null=True) 
-    car_mult = models.IntegerField(null=True) 
+    car_mult = models.IntegerField(null=True)
+    water_mult = models.IntegerField(null=True)
+    foodsource_mult = models.IntegerField(null=True) 
     total_points = models.IntegerField(null=True)
     group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
 
