@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib import messages
+from .models import User
 
 # Create your views here.
 
@@ -54,3 +55,11 @@ def submit_challenge(request):
         print(meat)
 
     return render(request, 'challenge.html')
+
+def update_profile(request):
+    if request.method == 'POST':
+        user = User.objects.get(id=request.user.id)
+        user.meat_mult = request.POST.get('diet', '')
+        user.save()
+        print(user.meat_mult)
+    return render(request, 'profile.html')        
