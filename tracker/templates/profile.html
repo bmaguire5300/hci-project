@@ -11,12 +11,60 @@
             <hr />
 
             <div class="custom-select" style="width:200px;">
-                What is your diet?
+                How often do you eat meat?
                 <select name="diet">
-                    <option value="0">Vegan</option>
-                    <option value="1">Vegetarian</option>
-                    <option value="2">Rarely eat meat</option>
-                    <option value="3">Eat meat often</option>
+                    {% if diet == 0 %}
+                    <option selected="selected" value="0">I am vegan</option>
+                    {% else %}
+                    <option value="0">I am vegan</option>
+                    {% endif %}
+
+                    {% if diet == 1 %}
+                    <option selected="selected" value="1">I am vegetarian</option>
+                    {% else %}
+                    <option value="1">I am vegetarian</option>
+                    {% endif %}
+
+                    {% if diet == 2 %}
+                    <option selected="selected" value="2">I rarely eat meat (less than 4 days a week)</option>
+                    {% else %}
+                    <option value="2">I rarely eat meat (less than 4 days a week)</option>
+                    {% endif %}
+
+                    {% if diet == 3 %}
+                    <option selected="selected" value="3">I eat meat often (practically everyday)</option>
+                    {% else %}
+                    <option value="3">I eat meat often (practically everyday)</option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <div class="custom-select" style="width:200px;">
+                How often do you drive a (non-electric) car?
+                <select name="car">
+                    {% if diet == 0 %}
+                    <option selected="selected" value="0">I never drive a car</option>
+                    {% else %}
+                    <option value="0">I never drive a car</option>
+                    {% endif %}
+
+                    {% if diet == 1 %}
+                    <option selected="selected" value="1">I occasionally drive (less than 2 days a week)</option>
+                    {% else %}
+                    <option value="1">I occasionally drive (less than 2 days a week)</option>
+                    {% endif %}
+
+                    {% if diet == 2 %}
+                    <option selected="selected" value="2">I drive routinely (practically everyday)</option>
+                    {% else %}
+                    <option value="2">I drive routinely (practically everyday)</option>
+                    {% endif %}
+
+                    {% if diet == 3 %}
+                    <option selected="selected" value="3">I drive multiple times a day (more than 2 times a day)</option>
+                    {% else %}
+                    <option value="3">I drive multiple times a day (more than 2 times a day)</option>
+                    {% endif %}
                 </select>
             </div>
 
