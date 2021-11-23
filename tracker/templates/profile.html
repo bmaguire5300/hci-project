@@ -4,128 +4,211 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-            <h1>Profile</h1>
-            <hr />
+          <h1>Profile</h1>
+          <hr />
           <form action="/updateProfile/" method="POST">
             {% csrf_token %}
 
             <table>
-                <tr>
-                    <td>How often do you eat meat?</td>
-                    <td>
-                        <div class="custom-select" style="width:200px;">
-                            <select name="diet">
-                                {% if diet == 0 %}
-                                <option selected="selected" value="0">I am vegan</option>
-                                {% else %}
-                                <option value="0">I am vegan</option>
-                                {% endif %}
+              <tr>
+                <td>Which school are you in?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="group">
+                      {% for g in groups %} {% if g.id == user_group %}
+                      <option selected value="{{g.id}}">{{g.name}}</option>
+                      {% else %}
+                      <option value="{{g.id}}">{{g.name}}</option>
+                      {% endif %} {% endfor %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>How much water do you use?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="water">
+                      {% if water == 0 %}
+                      <option selected="selected" value="0">
+                        I use very little water (I mainly use a bath and water
+                        basin for dishes)
+                      </option>
+                      {% else %}
+                      <option value="0">
+                        I use very little water (I mainly use a bath and water
+                        basin for dishes)
+                      </option>
+                      {% endif %} {% if water == 1 %}
+                      <option selected="selected" value="1">
+                        I use a modest amount of water (short showers and turn
+                        taps off when not in use)
+                      </option>
+                      {% else %}
+                      <option value="1">
+                        I use a modest amount of water (short showers and turn
+                        taps off when not in use)
+                      </option>
+                      {% endif %} {% if water == 2 %}
+                      <option selected="selected" value="2">
+                        I use a lot of water (long showers and sometime leave my
+                        tap running for excessive time periods)
+                      </option>
+                      {% else %}
+                      <option value="2">
+                        I use a lot of water (long showers and sometime leave my
+                        tap running for excessive time periods)
+                      </option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>How often do you eat meat?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="diet">
+                      {% if diet == 0 %}
+                      <option selected="selected" value="0">I am vegan</option>
+                      {% else %}
+                      <option value="0">I am vegan</option>
+                      {% endif %} {% if diet == 1 %}
+                      <option selected="selected" value="1">
+                        I am vegetarian
+                      </option>
+                      {% else %}
+                      <option value="1">I am vegetarian</option>
+                      {% endif %} {% if diet == 2 %}
+                      <option selected="selected" value="2">
+                        I rarely eat meat (less than 4 days a week)
+                      </option>
+                      {% else %}
+                      <option value="2">
+                        I rarely eat meat (less than 4 days a week)
+                      </option>
+                      {% endif %} {% if diet == 3 %}
+                      <option selected="selected" value="3">
+                        I eat meat often (practically everyday)
+                      </option>
+                      {% else %}
+                      <option value="3">
+                        I eat meat often (practically everyday)
+                      </option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
 
-                                {% if diet == 1 %}
-                                <option selected="selected" value="1">I am vegetarian</option>
-                                {% else %}
-                                <option value="1">I am vegetarian</option>
-                                {% endif %}
+              <tr>
+                <td>How often do you drive a (non-electric) car?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="car">
+                      {% if car == 0 %}
+                      <option selected="selected" value="0">
+                        I never drive a car
+                      </option>
+                      {% else %}
+                      <option value="0">I never drive a car</option>
+                      {% endif %} {% if car == 1 %}
+                      <option selected="selected" value="1">
+                        I occasionally drive (less than 2 days a week)
+                      </option>
+                      {% else %}
+                      <option value="1">
+                        I occasionally drive (less than 2 days a week)
+                      </option>
+                      {% endif %} {% if car == 2 %}
+                      <option selected="selected" value="2">
+                        I drive routinely (practically everyday)
+                      </option>
+                      {% else %}
+                      <option value="2">
+                        I drive routinely (practically everyday)
+                      </option>
+                      {% endif %} {% if car == 3 %}
+                      <option selected="selected" value="3">
+                        I drive multiple times a day (more than 2 times a day)
+                      </option>
+                      {% else %}
+                      <option value="3">
+                        I drive multiple times a day (more than 2 times a day)
+                      </option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
 
-                                {% if diet == 2 %}
-                                <option selected="selected" value="2">I rarely eat meat (less than 4 days a week)</option>
-                                {% else %}
-                                <option value="2">I rarely eat meat (less than 4 days a week)</option>
-                                {% endif %}
+              <tr>
+                <td>How much water do you use?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="water">
+                      {% if water == 0 %}
+                      <option selected="selected" value="0">
+                        I use very little water (I mainly use a bath and water
+                        basin for dishes)
+                      </option>
+                      {% else %}
+                      <option value="0">
+                        I use very little water (I mainly use a bath and water
+                        basin for dishes)
+                      </option>
+                      {% endif %} {% if water == 1 %}
+                      <option selected="selected" value="1">
+                        I use a modest amount of water (short showers and turn
+                        taps off when not in use)
+                      </option>
+                      {% else %}
+                      <option value="1">
+                        I use a modest amount of water (short showers and turn
+                        taps off when not in use)
+                      </option>
+                      {% endif %} {% if water == 2 %}
+                      <option selected="selected" value="2">
+                        I use a lot of water (long showers and sometime leave my
+                        tap running for excessive time periods)
+                      </option>
+                      {% else %}
+                      <option value="2">
+                        I use a lot of water (long showers and sometime leave my
+                        tap running for excessive time periods)
+                      </option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
 
-                                {% if diet == 3 %}
-                                <option selected="selected" value="3">I eat meat often (practically everyday)</option>
-                                {% else %}
-                                <option value="3">I eat meat often (practically everyday)</option>
-                                {% endif %}
-                            </select>
-                        </div>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td>How often do you drive a (non-electric) car?</td>
-                    <td>
-                        <div class="custom-select" style="width:200px;">
-                            
-                            <select name="car">
-                                {% if car == 0 %}
-                                <option selected="selected" value="0">I never drive a car</option>
-                                {% else %}
-                                <option value="0">I never drive a car</option>
-                                {% endif %}
-
-                                {% if car == 1 %}
-                                <option selected="selected" value="1">I occasionally drive (less than 2 days a week)</option>
-                                {% else %}
-                                <option value="1">I occasionally drive (less than 2 days a week)</option>
-                                {% endif %}
-
-                                {% if car == 2 %}
-                                <option selected="selected" value="2">I drive routinely (practically everyday)</option>
-                                {% else %}
-                                <option value="2">I drive routinely (practically everyday)</option>
-                                {% endif %}
-
-                                {% if car == 3 %}
-                                <option selected="selected" value="3">I drive multiple times a day (more than 2 times a day)</option>
-                                {% else %}
-                                <option value="3">I drive multiple times a day (more than 2 times a day)</option>
-                                {% endif %}
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>How much water do you use?</td>
-                    <td>
-                        <div class="custom-select" style="width:200px;">
-                            <select name="water">
-                                {% if water == 0 %}
-                                <option selected="selected" value="0">I use very little water (I mainly use a bath and water basin for dishes)</option>
-                                {% else %}
-                                <option value="0">I use very little water (I mainly use a bath and water basin for dishes)</option>
-                                {% endif %}
-
-                                {% if water == 1 %}
-                                <option selected="selected" value="1">I use a modest amount of water (short showers and turn taps off when not in use)</option>
-                                {% else %}
-                                <option value="1">I use a modest amount of water (short showers and turn taps off when not in use)</option>
-                                {% endif %}
-
-                                {% if water == 2 %}
-                                <option selected="selected" value="2">I use a lot of water (long showers and sometime leave my tap running for excessive time periods)</option>
-                                {% else %}
-                                <option value="2">I use a lot of water (long showers and sometime leave my tap running for excessive time periods)</option>
-                                {% endif %}
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Where do you buy food?</td>
-                    <td>
-                        <div class="custom-select" style="width:200px;">
-                            <select name="foodsource">
-                                {% if foodsource == 0 %}
-                                <option selected="selected" value="0">I buy mainly locally sourced or organic food</option>
-                                {% else %}
-                                <option value="0">I buy mainly locally sourced or organic food</option>
-                                {% endif %}
-
-                                {% if foodsource == 1 %}
-                                <option selected="selected" value="1">I buy mainly factory produced food</option>
-                                {% else %}
-                                <option value="1">I buy mainly factory produced food</option>
-                                {% endif %}
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-
+              <tr>
+                <td>Where do you buy food?</td>
+                <td>
+                  <div class="custom-select" style="width: 200px">
+                    <select name="foodsource">
+                      {% if foodsource == 0 %}
+                      <option selected="selected" value="0">
+                        I buy mainly locally sourced or organic food
+                      </option>
+                      {% else %}
+                      <option value="0">
+                        I buy mainly locally sourced or organic food
+                      </option>
+                      {% endif %} {% if foodsource == 1 %}
+                      <option selected="selected" value="1">
+                        I buy mainly factory produced food
+                      </option>
+                      {% else %}
+                      <option value="1">
+                        I buy mainly factory produced food
+                      </option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </td>
+              </tr>
             </table>
 
             <button type="submit" class="btn btn-primary" value="Submit">
