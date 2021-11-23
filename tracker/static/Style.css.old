@@ -1,0 +1,39 @@
+nav{
+    display: flex;
+    overflow: hidden;
+    justify-content: space-around;
+    align-items: center;
+    min-height:8vh;
+}
+
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    float: left;
+	background-color: #333;
+}
+.nav-links a{
+	display: block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: center;
+}
+.nav-links a:hover{
+	background-color: #0000FF;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.card {
+	margin: 0 auto;
+	float: none
+}
+
+form { 
+	width: 50%;
+	margin-left: 25%
+}

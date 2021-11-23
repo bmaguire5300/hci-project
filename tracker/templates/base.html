@@ -20,6 +20,43 @@
       crossorigin="anonymous"
     ></script>
   </head>
+  
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  href="{%  static  'Style.css'  %}">
+        <title>Placeholder</title>
+
+        <style>
+            html,body, body * {
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <!--NAV BAR-->
+    <nav>
+        <!--NAV ITEMS-->
+            <ul class="nav-links">
+            <li>
+                <a href="/challenge/">Challenges</a>
+            </li>
+
+            <li>
+                <a href="/dashboard/">Dashboard</a>
+            </li>
+            <li>
+                <a href="/profile/">Profile</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+                <a href="/logout/">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
 
   {% block body_block %} {% endblock %}
+  
 </html>

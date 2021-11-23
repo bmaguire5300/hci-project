@@ -1,0 +1,37 @@
+
+
+.nav-links{
+	background-color: #333;
+	overflow: hidden;
+}
+.nav-links a{
+	float: left;
+	color: #FFFFFF;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+.nav-links a:hover{
+	background-color: #93be34;
+	color: white;
+}
+
+.nav-links a:active {
+	background-color: #0000FF;
+	color: white;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.card {
+	margin: 0 auto;
+	float: none
+}
+
+form { 
+	width: 50%;
+	margin-left: 25%
+}
