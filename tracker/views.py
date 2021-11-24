@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -29,13 +30,13 @@ def user_login(request):
     else:
         return render(request, 'login.html')
 
-
+@login_required(login_url='/login/')
 def dashboard(request):
     context_dict = {}
 
     return render(request, 'dashboard.html', context=context_dict)
 
-
+@login_required(login_url='/login/')
 def profile(request):
     user = User.objects.get(id=request.user.id)
     context_dict = {}
@@ -51,7 +52,7 @@ def profile(request):
 
     return render(request, 'profile.html', context=context_dict)
 
-
+@login_required(login_url='/login/')
 def challenge(request):
     context_dict = {}
 
@@ -87,7 +88,7 @@ def update_profile(request):
      
     return profile(request)        
 
-
+@login_required(login_url='/login/')
 def leaderboard(request):
     context_dict = {}
 
